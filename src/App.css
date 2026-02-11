@@ -1,0 +1,131 @@
+/*
+Background:     #0F172A   (Deep slate / navy)
+Surface/Card:   #020617   (Near-black)
+Primary Text:   #E5E7EB   (Light gray)
+Secondary Text: #94A3B8   (Muted blue-gray)
+
+Primary Accent: #3B82F6   (Blue)
+Hover Accent:   #2563EB
+Divider:        #1E293B
+ */
+
+:root {
+  --bg: #0F172A;
+  --surface: #020617;
+
+  --text: #E5E7EB;
+  --text-muted: #94A3B8;
+
+  --accent: #3B82F6;
+  --accent-hover: #2563EB;
+
+  --divider: #1E293B;
+
+  /* optional: spacing + radius tokens */
+  --radius: 16px;
+  --space-1: 0.5rem;
+  --space-2: 1rem;
+  --space-3: 2rem;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Rob;
+  line-height: 1.6;
+  
+  h1 {
+    font-size: 4rem;
+    margin: 0;
+  }
+  
+  h2 {
+    color: var(--text);
+  }
+}
+#root {
+  padding: 0.5rem;
+  min-height: 100vh;
+  margin: 0.5rem;
+
+  @media (min-width: 1024px) {
+    padding: 2rem;
+    min-height: 100vh;
+    margin: 4rem;
+  }
+}
+
+/* Layout container */
+.page {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding-bottom: 4rem;
+}
+
+/* mobile default */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: flex-start;
+}
+
+.sidebarBottom {
+  margin-top: 0;
+}
+
+/* Optional: space between top/nav/bottom when sticky on desktop */
+.sidebarTop {
+  display: flex;
+  flex-direction: column;
+}
+
+.subtitleBlock {
+  margin-top: 1.5rem;
+}
+
+.title {
+  margin-top: 0.25rem;
+}
+
+.tagline {
+  margin-top: 0.25rem;
+  color: var(--text-muted);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  min-width: 0; /* prevents overflow issues in grid */
+}
+
+/* ---------- Breakpoints ---------- */
+
+/* Tablet+ (optional tweaks) */
+@media (min-width: 768px) {
+  .page {
+    gap: 3rem;
+  }
+}
+
+/* Desktop: two columns + sticky sidebar */
+@media (min-width: 1024px) {
+  .page {
+    grid-template-columns: 320px 1fr;
+    align-items: start;
+    gap: 4rem;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 74px;
+    height: calc(100vh - 170px);
+    justify-content: space-between;
+  }
+
+  .sidebarBottom {
+    margin-top: 0;
+  }
+}

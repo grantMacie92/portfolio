@@ -1,0 +1,14 @@
+#about {
+    color: var(--text-muted);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @media (min-width: 1024px) {
+        padding: 0 0 0 2rem;
+    }
+    
+    span {
+        padding: 4px;
+    }
+}

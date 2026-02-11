@@ -1,0 +1,23 @@
+.image {
+    width: 50%;
+    border-radius: 8px;
+    border-radius: 50%;
+    display: flex;
+    justify-self: center;
+    padding: 1rem 0;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+
+    @media (min-width: 1024px) {
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: end;
+        
+        h3 {
+            margin: 0;
+        }
+    }
+}

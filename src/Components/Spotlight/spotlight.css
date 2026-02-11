@@ -1,0 +1,24 @@
+/* spotlight.css */
+.spotlight {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0; /* keep behind your content */
+}
+
+.spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+
+    /* The magic */
+    background: radial-gradient(
+            600px circle at var(--spotlight-x, 50%) var(--spotlight-y, 50%),
+            rgba(59, 130, 246, 0.12),
+            transparent 60%
+    );
+
+    transition: opacity 150ms ease;
+    opacity: var(--spotlight-opacity, 1);
+}
+

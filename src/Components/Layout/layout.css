@@ -1,0 +1,9 @@
+.container {
+    position: relative;
+    min-height: 100vh;
+    
+    .children {
+        position: relative;
+        zIndex: 1;
+    }
+}

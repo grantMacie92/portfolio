@@ -1,0 +1,72 @@
+.navigation-links {
+    display: flex;
+    flex-direction: column;
+    
+    a {
+        text-decoration: none;
+        color: var(--text);
+        padding: 2rem 0;
+    };
+}
+
+/* Base link layout */
+.navLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 0.875rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+
+    color: var(--text-muted);              /* muted text */
+    text-decoration: none;
+
+    transition: color 200ms ease;
+}
+
+/* The “line” indicator */
+.navIndicator {
+    display: block;               /* IMPORTANT: lets width apply */
+    height: 1px;
+    width: 32px;                  /* “w-8” equivalent */
+    background: #475569;          /* muted line */
+
+    transition: width 200ms ease, background-color 200ms ease;
+}
+
+/* Hover behavior */
+.navLink:hover {
+    color: #e2e8f0;
+}
+.navLink:hover .navIndicator {
+    width: 48px;                  /* “w-12” equivalent */
+    background: #94a3b8;
+}
+
+/* Active behavior */
+.navLink.isActive,
+.navLink[aria-current="true"] {
+    color: #f1f5f9;
+}
+
+.navLink.isActive .navIndicator,
+.navLink[aria-current="true"] .navIndicator {
+    width: 48px;
+    background: #e2e8f0;
+}
+
+/* Optional: keyboard focus */
+.navLink:focus-visible {
+    outline: 2px solid rgba(59, 130, 246, 0.6);
+    outline-offset: 4px;
+    border-radius: 6px;
+}
+
+/* Optional: respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .navLink,
+    .navIndicator {
+        transition: none;
+    }
+}

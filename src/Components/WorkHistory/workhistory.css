@@ -1,0 +1,63 @@
+#experience {
+    .work-history-item {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+
+        @media (min-width: 1024px) {
+            flex-direction: row;
+
+            .time {
+                width: 30%;
+            }
+
+            .info {
+                width: 70%;
+            }
+        }
+
+            .description {
+            color: var(--text-muted);
+        }
+        
+        .skills {
+            margin: 0.25rem 0;
+            .skill {
+                background-color: transparent;
+                border: 1px solid #1E293B;
+                color: var(--text-muted);
+                display: inline-flex;
+                align-items: center;
+                padding: 0.25rem 0.65rem;
+                border-radius: 9999px;
+                font-size: 0.75rem;
+                font-weight: 500;
+                line-height: 1;
+                white-space: nowrap;
+                margin: 2px;
+            }
+        }
+    }
+
+    :hover {
+        background-color: #0A1020;
+
+        .info {
+            .title {
+                color: #3B82F6;
+            }
+        }
+        
+        .time {
+            color: #3B82F6;
+        }
+        
+        .skills {
+            .skill {
+                background-color: rgba(59,130,246,0.08);
+                border-color: #3B82F6;
+                color: #E5E7EB
+            }
+        }
+    }
+}
