@@ -1,12 +1,3 @@
-.image {
-    width: 50%;
-    border-radius: 8px;
-    border-radius: 50%;
-    display: flex;
-    justify-self: center;
-    padding: 1rem 0;
-}
-
 .section {
     display: flex;
     flex-direction: column;
@@ -20,4 +11,89 @@
             margin: 0;
         }
     }
+}
+
+/* The ring wrapper */
+.pfp {
+    --ring: conic-gradient(
+            from 0deg,
+            var(--accent),
+            #a78bfa,
+            #34d399,
+            var(--accent),
+            #f59e0b,
+            var(--accent)
+    );
+
+    margin: 2rem 2rem 4rem 2rem;
+    display: flex;
+    justify-self: center;
+    width: 50%;
+    height: 50%;
+    padding: 4px;              /* ring thickness */
+    box-sizing: border-box;
+    border-radius: 999px;
+    position: relative;
+
+    background: var(--ring);
+    display: grid;
+    place-items: center;        /* centers the image box */
+    overflow: visible;
+
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+/* Glow (optional) */
+.pfp::before {
+    content: "";
+    position: absolute;
+    inset: -14px;               /* slightly smaller than -18px */
+    border-radius: inherit;
+    background: var(--ring);
+    filter: blur(18px);
+    opacity: 0.5;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* The actual image */
+.pfp > img,
+.image {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+    display: block;
+    padding: 0;                 /* IMPORTANT: remove your padding */
+    margin: 0;
+    background: var(--surface);
+}
+
+/* spin only the ring background */
+.pfp {
+    background: none; /* we’ll move the ring to ::after */
+}
+
+.pfp::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--ring);
+    animation: ringSpin 4s linear infinite;
+    z-index: 0;
+}
+
+/* keep the image above the ring */
+.pfp > img {
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes ringSpin {
+    to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pfp::after { animation: none; }
 }

@@ -10,7 +10,9 @@ const Contact = () => {
             {
                 isMobile && <h2>Contact</h2>
             }
-            <img className='image' src={profile}/>
+            <div className="pfp">
+                <img className='image' src={profile}/>
+            </div>
             <div className="section">
                 <h3><FaPhone/> (305)-336-0594</h3>
                 <h3><FaEnvelope /> grant.macie92@gmail.com</h3>
