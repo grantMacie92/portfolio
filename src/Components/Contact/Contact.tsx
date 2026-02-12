@@ -14,7 +14,7 @@ const Contact = () => {
                 <img className='image' src={profile}/>
             </div>
             <div className="section">
-                <h3><FaPhone/> (305)-336-0594</h3>
+                <h3><FaPhone  /> (305)-336-0594</h3>
                 <h3><FaEnvelope /> grant.macie92@gmail.com</h3>
             </div>
         </div>
