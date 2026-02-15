@@ -10,7 +10,7 @@ const WorkHistory = () => {
                 <h2>Experience</h2>
             )}
             <WorkHistoryItem 
-                time="JANUARY 2022 - PRESENT"
+                time="JANUARY 2022 - FEBRUARY 2026"
                 title="HHSterling, Remote — Senior Software Engineer"
                 description="Full-stack engineer on a two-person consulting team supporting and modernizing a large suite of enterprise applications. Led cross-platform initiatives including unifying legacy and rewritten navigation systems and standardizing UI themes across more than twenty products.
                     Migrated navigation configuration from database-driven logic to YAML to improve flexibility and maintainability. Built geospatial features using the Google Maps API and contributed to complex integrations such as WEX COBRA. Optimized backend services and SQL queries using New Relic, reducing critical response times by over ninety percent, and refactored core services to align with CQRS and MediatR patterns. Supported production deployments and participated in technical hiring."
