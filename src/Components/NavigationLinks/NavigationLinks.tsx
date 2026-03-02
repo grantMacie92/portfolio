@@ -1,6 +1,6 @@
-import "./navigationLinks.css";
-import NavLink from "./NavLink.tsx";
 import { useActiveSection } from "../../hooks/useActiveSection.tsx";
+import NavLink from "./NavLink.tsx";
+import "./index.css";
 
 const SECTIONS = [
     { id: "about", label: "About" },

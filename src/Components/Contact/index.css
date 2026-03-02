@@ -1,0 +1,224 @@
+/* index.css (Contact footer) */
+
+/* ============ Section wrapper ============ */
+.contact {
+    width: 100%;
+}
+
+/* ============ Card container ============ */
+.contactCard {
+    background: rgba(2, 6, 23, 0.72);                 /* near --surface */
+    border: 1px solid rgba(30, 41, 59, 0.85);         /* near --divider */
+    border-radius: 18px;
+    padding: 1.5rem;
+
+    display: grid;
+    gap: 1.25rem;
+
+    box-shadow:
+            0 1px 0 rgba(255, 255, 255, 0.03) inset,
+            0 12px 36px rgba(0, 0, 0, 0.25);
+
+    backdrop-filter: blur(10px);
+}
+
+/* ============ Left side (image + text) ============ */
+.contactLeft {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.contactBlurb {
+    min-width: 0;
+}
+
+.contactTitle {
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--text);
+    letter-spacing: 0.02em;
+}
+
+.contactText {
+    margin: 0.35rem 0 0 0;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ============ Right side (rows + socials) ============ */
+.contactRight {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+/* Clickable rows */
+.contactRow {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+
+    padding: 0.9rem 1rem;
+    border-radius: 14px;
+
+    text-decoration: none;
+
+    background: rgba(15, 23, 42, 0.55);
+    border: 1px solid rgba(30, 41, 59, 0.7);
+
+    transition: transform 160ms ease, border-color 160ms ease, background-color 160ms ease;
+}
+
+.contactRow:hover {
+    transform: translateY(-1px);
+    border-color: rgba(59, 130, 246, 0.55);          /* --accent */
+    background: rgba(15, 23, 42, 0.75);
+}
+
+.contactRow:focus-visible {
+    outline: 2px solid rgba(59, 130, 246, 0.6);
+    outline-offset: 3px;
+}
+
+/* Icon circle */
+.contactIcon {
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    display: grid;
+    place-items: center;
+
+    background: rgba(59, 130, 246, 0.12);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    color: var(--text);
+}
+
+.contactMeta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+}
+
+.contactLabel {
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.contactValue {
+    color: var(--text);
+    font-weight: 600;
+    font-size: 0.95rem;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.contactSocial {
+    padding-top: 0.35rem;
+}
+
+/* ============ Profile ring  ============ */
+
+/* The ring wrapper */
+.pfp {
+    --ring: conic-gradient(
+            from 0deg,
+            var(--accent),
+            #a78bfa,
+            #34d399,
+            var(--accent),
+            #f59e0b,
+            var(--accent)
+    );
+
+    margin: 0;
+    width: 200px;
+    aspect-ratio: 1 / 1;
+
+    padding: 4px;                 /* ring thickness */
+    box-sizing: border-box;
+    border-radius: 999px;
+    position: relative;
+
+    display: grid;
+    place-items: center;          /* centers the image box */
+    overflow: visible;
+
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+}
+
+/* Glow  */
+.pfp::before {
+    content: "";
+    position: absolute;
+    inset: -14px;
+    border-radius: inherit;
+    background: var(--ring);
+    filter: blur(18px);
+    opacity: 0.5;
+    z-index: -1;
+    pointer-events: none;
+}
+
+/* spin only the ring background */
+.pfp {
+    background: none; /* ring moved to ::after */
+}
+
+.pfp::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--ring);
+    animation: ringSpin 4s linear infinite;
+    z-index: 0;
+}
+
+/* The actual image */
+.pfp > img,
+.image {
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    object-fit: cover;
+    display: block;
+    padding: 0;
+    margin: 0;
+    background: var(--surface);
+    aspect-ratio: 1 / 1;
+
+    position: relative;
+    z-index: 1; /* keep image above ring */
+}
+
+@keyframes ringSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .pfp::after {
+        animation: none;
+    }
+}
+
+/* ============ Desktop layout ============ */
+@media (min-width: 1024px) {
+    .contactCard {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        padding: 1.75rem;
+    }
+
+    .contactRight {
+        justify-self: end;
+        width: min(420px, 100%);
+    }
+}

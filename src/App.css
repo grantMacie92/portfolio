@@ -20,43 +20,53 @@ Divider:        #1E293B
   --accent-hover: #2563EB;
 
   --divider: #1E293B;
+}
 
-  /* optional: spacing + radius tokens */
-  --radius: 16px;
-  --space-1: 0.5rem;
-  --space-2: 1rem;
-  --space-3: 2rem;
+/* ---------- Base / global ---------- */
+
+html, body {
+  height: 100%;
 }
 
 body {
+  margin: 0;
   background-color: var(--bg);
   color: var(--text);
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Rob;
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
   line-height: 1.6;
-  
-  h1 {
-    font-size: 4rem;
-    margin: 0;
-  }
-  
-  h2 {
-    color: var(--text);
-  }
+
+  /* IMPORTANT: allow normal page scrolling */
+  overflow-x: hidden;
+  overflow-y: auto;
 }
+
+body h1 {
+  font-size: 4rem;
+  margin: 0;
+}
+
+body h2 {
+  color: var(--text);
+}
+
+/* ---------- App root spacing ---------- */
 
 #root {
   padding: 0.5rem;
   min-height: 100vh;
   margin: 0.5rem;
+}
 
-  @media (min-width: 1024px) {
-    padding: 2rem 2rem 0 2rem;
+@media (min-width: 1024px) {
+  #root {
+    padding: 2rem;
     min-height: 100vh;
-    margin: 4rem 4rem 0 4rem;
   }
 }
 
-/* Layout container */
+/* ---------- Layout container ---------- */
+
+/* Mobile/tablet default: single column */
 .page {
   display: grid;
   grid-template-columns: 1fr;
@@ -64,7 +74,6 @@ body {
   padding-bottom: 2rem;
 }
 
-/* mobile default */
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -72,11 +81,6 @@ body {
   justify-content: flex-start;
 }
 
-.sidebarBottom {
-  margin-top: 0;
-}
-
-/* Optional: space between top/nav/bottom when sticky on desktop */
 .sidebarTop {
   display: flex;
   flex-direction: column;
@@ -95,37 +99,57 @@ body {
   color: var(--text-muted);
 }
 
+.sidebarBottom {
+  margin-top: 0;
+}
+
 .content {
   display: flex;
   flex-direction: column;
   gap: 4rem;
+
+  /* IMPORTANT: do NOT make content a scroll container */
+  overflow: visible;
+  height: auto;
+
   min-width: 0; /* prevents overflow issues in grid */
 }
 
+.contactRow, .contactMeta, .contactRight { min-width: 0; }
+.contactValue { overflow-wrap: anywhere; word-break: break-word; }
+
 /* ---------- Breakpoints ---------- */
 
-/* Tablet+ (optional tweaks) */
 @media (min-width: 768px) {
   .page {
     gap: 3rem;
   }
 }
 
-/* Desktop: two columns + sticky sidebar */
+/* Desktop: two columns; left stays visible via sticky; page scrolls */
 @media (min-width: 1024px) {
   .page {
-    grid-template-columns: 320px 1fr;
-    align-items: start;
-    gap: 4rem;
+    /* page still participates in normal flow so BODY scrolls */
+    display: block;
+    position: relative;
   }
 
   .sidebar {
-    position: sticky;
-    top: 1rem;
-    justify-content: space-between;
+    position: fixed;
+    left: 4rem;
+    width: 320px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1rem;
+
+    overflow: hidden; /* prevents sidebar from scrolling */
   }
 
-  .sidebarBottom {
-    margin-top: 0;
+  .content {
+    /* Push content to the right of the fixed sidebar */
+    margin-left: calc(320px + 4rem); /* sidebar width + gap */
+    min-width: 0;
   }
 }

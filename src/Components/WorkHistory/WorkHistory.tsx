@@ -1,5 +1,5 @@
 import WorkHistoryItem from "./WorkHistoryItem.tsx";
-import "./workhistory.css";
+import "./index.css";
 import useMediaQuery from "../../hooks/useMediaQuery.tsx";
 const WorkHistory = () => {
     const isMobile = useMediaQuery("(max-width: 991px)");

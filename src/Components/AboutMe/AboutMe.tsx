@@ -1,5 +1,5 @@
 import useMediaQuery from "../../hooks/useMediaQuery.tsx";
-import './aboutme.css';
+import './index.css';
 
 const AboutMe = () => {
     const isMobile = useMediaQuery("(max-width: 991px)");

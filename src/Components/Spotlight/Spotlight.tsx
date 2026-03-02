@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import "./spotlight.css";
+import "./index.css";
 
 export function SpotlightBackground() {
     const rafRef = useRef<number | null>(null);

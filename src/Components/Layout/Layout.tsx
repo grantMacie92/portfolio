@@ -1,5 +1,5 @@
 import { SpotlightBackground } from "../Spotlight/Spotlight.tsx";
-import './layout.css';
+import './index.css';
 
 export function Layout({ children }: { children: React.ReactNode }) {
     return (
