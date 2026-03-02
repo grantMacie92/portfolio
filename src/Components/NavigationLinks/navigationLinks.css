@@ -28,7 +28,7 @@
 /* The “line” indicator */
 .navIndicator {
     display: block;               /* IMPORTANT: lets width apply */
-    height: 1px;
+    height: 2px;
     width: 32px;                  /* “w-8” equivalent */
     background: #475569;          /* muted line */
 

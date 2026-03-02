@@ -1,0 +1,146 @@
+#projects {
+    .project-list-item {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        border-radius: 5%;
+
+        .description {
+            color: var(--text-muted);
+        }
+
+        .title {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        .skills {
+            margin: 1rem 0 2rem 0;
+            .skill {
+                background-color: transparent;
+                border: 1px solid #1E293B;
+                color: var(--text-muted);
+                display: inline-flex;
+                align-items: center;
+                padding: 0.25rem 0.65rem;
+                border-radius: 9999px;
+                font-size: 0.75rem;
+                font-weight: 500;
+                line-height: 1;
+                white-space: nowrap;
+                margin: 2px;
+            }
+        }
+    }
+
+    :hover {
+        background-color: #0A1020;
+
+        .title {
+            color: #3B82F6;
+        }
+
+        .skills {
+            .skill {
+                background-color: rgba(59,130,246,0.08);
+                border-color: #3B82F6;
+                color: #E5E7EB
+            }
+        }
+    }
+}
+
+/* Animate an angle custom property */
+@property --spin {
+    syntax: "<angle>";
+    inherits: true;       /* IMPORTANT so ::before inherits it */
+    initial-value: 0turn;
+}
+
+#projects {
+    .project-list-item {
+        --spin: 0turn; /* default */
+
+        .skills {
+            .skill {
+                position: relative;
+                isolation: isolate;
+
+                background-color: transparent;
+                border: 1px solid #475569;
+                color: var(--text-muted);
+                display: inline-flex;
+                align-items: center;
+                padding: 0.25rem 0.65rem;
+                border-radius: 9999px;
+                font-size: 0.75rem;
+                font-weight: 500;
+                line-height: 1;
+                white-space: nowrap;
+                margin: 2px;
+            }
+
+            /* hidden color-wheel border layer */
+            .skill::before {
+                content: "";
+                position: absolute;
+                inset: -1px;          /* border thickness */
+                padding: 1px;         /* border thickness */
+                border-radius: inherit;
+
+                background: conic-gradient(
+                        from var(--spin),
+                        var(--accent),
+                        #a78bfa,
+                        #34d399,
+                        var(--accent),
+                        #f59e0b,
+                        var(--accent)
+                );
+
+                /* show only the border */
+                -webkit-mask:
+                        linear-gradient(#000 0 0) content-box,
+                        linear-gradient(#000 0 0);
+                -webkit-mask-composite: xor;
+                mask-composite: exclude;
+
+                opacity: 0;
+                pointer-events: none;
+                z-index: -1;
+            }
+        }
+    }
+
+    /* hover the whole item: affect ALL pills */
+    .project-list-item:hover {
+        background-color: #0A1020;
+
+        .title { color: #3B82F6; }
+
+        /* keep your existing pill fill/text hover */
+        .skills .skill {
+            background-color: rgba(59,130,246,0.08);
+            border-color: transparent;
+            color: #E5E7EB;
+        }
+
+        /* turn on the wheel border for all pills */
+        .skills .skill::before {
+            opacity: 1;
+        }
+
+        /* animate ONLY the colors (angle), not the pill */
+        animation: spinColors 4s linear infinite;
+    }
+}
+
+@keyframes spinColors {
+    to { --spin: 1turn; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #projects .project-list-item:hover {
+        animation: none;
+    }
+}
