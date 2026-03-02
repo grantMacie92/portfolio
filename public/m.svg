@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+    <!-- Background -->
+    <rect width="64" height="64" rx="16" fill="#020617"/>
+    <!-- Subtle frame -->
+    <rect x="6" y="6" width="52" height="52" rx="14" fill="none" stroke="#1E293B" stroke-width="2"/>
+
+    <!-- Monogram M -->
+    <path
+            d="M18 46V20h6l8 14 8-14h6v26h-6V31l-6 10h-4l-6-10v15h-6z"
+            fill="#E5E7EB"
+    />
+
+    <!-- Flower (top-right of the M, slightly overlapping) -->
+    <g transform="translate(44 22)">
+        <circle cx="0" cy="-4" r="3" fill="#3B82F6"/>
+        <circle cx="3.6" cy="-1.2" r="3" fill="#60A5FA"/>
+        <circle cx="2.2" cy="3.2" r="3" fill="#3B82F6"/>
+        <circle cx="-2.2" cy="3.2" r="3" fill="#60A5FA"/>
+        <circle cx="-3.6" cy="-1.2" r="3" fill="#3B82F6"/>
+        <circle cx="0" cy="0" r="2" fill="#E5E7EB"/>
+    </g>
+</svg>
